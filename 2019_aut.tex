@@ -1,0 +1,99 @@
+%%%%%%%%% JPS abstruct %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,a4paper]{jsarticle}
+
+%%%%%%%%% packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[dvipdfmx]{graphicx} % Include figure files
+\usepackage[%                           % 余白の設定
+%mag=1400,%                              jarticle の場合（14pt）に
+dvipdfm,truedimen,%
+top=30truemm,bottom=20truemm,%
+left=20truemm,right=20truemm]{geometry}
+\usepackage{array,booktabs}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+\pagestyle{empty}
+
+%%%%%%%%% header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\vspace{-5pt}
+\begin{center}
+  {\gt \Large ニューラルネットワークを用いたMAIKo TPC の飛跡データの解析 }\\[14pt]
+  
+  {\gt \large 京大理$^{\rm{A}}$ 阪大理$^{\rm{B}}$ 阪大RCNP$^{\rm{C}}$\\
+    土井隆暢$^{\rm{A}}$, 川畑貴裕$^{\rm{B}}$, 古野達也$^{\rm{C}}$}\\[5pt]
+  
+  {\large \bf Analysis of MAIKo TPC track data using neural networks.}\\[5pt]
+  
+  {\large \it $^{\rm{A}}$Dep. of Phys., Kyoto Univ. $^{\rm{B}}$Dep. of Phys., Osaka Univ.
+    $^{\rm{C}}$RCNP, Osaka Univ.}\\
+  
+  {\large \bf T. Doi$^{\rm{A}}$, T. Kawabata$^{\rm{B}}$, T. Furuno$^{\rm{C}}$}
+\end{center}
+
+\vspace{5pt}
+%%%%%%%%% main %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\small
+MAIKo TPC% (Mu-PIC based Active target for Inverse Kinematics .)
+は荷電粒子の飛跡を三次元的に測定出来るガス検出器であり、
+検出器中のガスを標的として用いることで、
+従来の標的では実現できない低エネルギー粒子の測定が可能となる。
+図(\ref{fig:true}), (\ref{fig:false})の%ような画像データが得られる。
+に示すように、MAIKo TPC からは
+3次元の飛跡をビーム入射方向に対して平行な面に射影した飛跡と
+ビーム入射方向に対して垂直な面に射影した飛跡を示す
+2つの2次元画像が得られる。
+取得された画像データから散乱角度や励起エネルギーなどの
+分光学的情報を得るためには、
+画像解析を行って飛跡の長さと方向を抽出する必要がある。
+しかし、MAIKo TPC を用いた原子核散乱の測定においては、
+実験の目的となる原子核との散乱の他にも、
+クエンチガスの原子核との散乱も測定される。
+そのため、MAIKo TPC から得られた荷電粒子の飛跡データの
+画像解析においては、飛跡抽出を行う前に
+目的の散乱事象であるかどうかの識別を行う必要がある。
+
+我々はこれまでHough 変換による飛跡抽出アルゴリズムを用いて散乱事象の
+識別を行う複雑な従来手法に代わる新しい手法として
+ニューラルネットワークを用いた識別アルゴリズムの開発を行ってきた。
+この結果、実際の測定データを用いて学習を行ったニューラルネットワークは、
+従来手法よりも高速かつ高精度に散乱事象を識別することが分かった。
+しかし、実験中のオンライン解析にこの解析手法を用いるには、
+測定前に学習を済ませておく必要がある為、
+実際の測定データを用いてニューラルネットワークの訓練を行うことが出来ない。
+そこで、我々はシミュレーションにより生成した飛跡データを用いて、
+測定前にニューラルネットワークを構築することを企図した。
+
+本講演では、シミュレーションによって生成した疑似データを
+用いたニューラルネットワークの構築を用いた散乱事象の識別結果について報告する。
+
+\vspace*{-0.5\intextsep}
+\begin{figure}[h]
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \includegraphics[clip,width=50mm]{true.eps}
+    \end{center}
+    \vspace*{-1\intextsep}
+    \subcaption{${}^{10}\rm{C}$と${}^{4}\rm{He}$との散乱}
+    \label{fig:true}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \begin{center}
+      \includegraphics[clip,width=50mm]{false.eps}
+    \end{center}
+    \vspace*{-1\intextsep}
+    \subcaption{${}^{4}\rm{He}$以外との散乱}
+    \label{fig:false}
+  \end{minipage}
+  \vspace*{-0.7\intextsep}
+  \caption{\small
+    MAIKo TPC を用いて測定した${}^{10}\rm{C} + {}^{4}\rm{He}$散乱事象の飛跡データ。
+    (a), (b)ともに左がビームに平行な面、右がビームに垂直な面に
+    飛跡を射影した画像。
+  }
+\end{figure}
+
+\end{document}
