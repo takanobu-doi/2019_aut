@@ -26,12 +26,13 @@ left=20truemm,right=20truemm]{geometry}
   {\gt \large 京大理$^{\rm{A}}$ 阪大理$^{\rm{B}}$ 阪大RCNP$^{\rm{C}}$\\
     土井隆暢$^{\rm{A}}$, 川畑貴裕$^{\rm{B}}$, 古野達也$^{\rm{C}}$}\\[5pt]
   
-  {\large \bf Development of analysis method for TPC track using neural network.}\\[5pt]
+  {\large \bf Development of analysis method for TPC track \\
+	using neural network.}\\[5pt]
   
-  {\large \it $^{\rm{A}}$Dep. of Phys., Kyoto Univ. $^{\rm{B}}$Dep. of Phys., Osaka Univ.
+  {\large \it $^{\rm{A}}$Dep. of Phys., Kyoto Univ. $^{\rm{B}}$Dep. of Phys., Osaka Univ. \\
     $^{\rm{C}}$RCNP, Osaka Univ.}\\
   
-  {\large \bf T. Doi$^{\rm{A}}$, T. Kawabata$^{\rm{B}}$, T. Furuno$^{\rm{C}}$}
+  {\large \bf T. Doi$^{\rm{A}}$, T. Kawabata$^{\rm{B}}$, and T. Furuno$^{\rm{C}}$}
 \end{center}
 
 \vspace{5pt}
@@ -43,12 +44,12 @@ MAIKo TPC% (Mu-PIC based Active target for Inverse Kinematics .)
 従来の標的では実現できない低エネルギー粒子の測定が可能となる。
 図(\ref{fig:true}), (\ref{fig:false})の%ような画像データが得られる。
 に示すように、MAIKo TPC からは
-3次元の飛跡をビーム入射方向に対して平行な面に射影した飛跡と
-ビーム入射方向に対して垂直な面に射影した飛跡を示す
+3次元の飛跡をビーム入射方向に対して平行な面に射影した飛跡 (a) と
+ビーム入射方向に対して垂直な面に射影した飛跡 (b) の
 2つの2次元画像が得られる。
-取得された画像データから散乱角度や励起エネルギーなどの
+取得された画像データから反跳角度やエネルギーなどの
 分光学的情報を得るためには、
-画像解析を行って飛跡の長さと方向を抽出する必要がある。
+画像解析を行って飛跡の方向と長さを抽出する必要がある。
 しかし、MAIKo TPC を用いた原子核散乱の測定においては、
 実験の目的となる原子核との散乱の他にも、
 クエンチガスの原子核との散乱も測定される。
@@ -57,7 +58,7 @@ MAIKo TPC% (Mu-PIC based Active target for Inverse Kinematics .)
 目的の散乱事象であるかどうかの識別を行う必要がある。
 
 我々はこれまでHough 変換による飛跡抽出アルゴリズムを用いて散乱事象の
-識別を行う複雑な従来手法に代わる新しい手法として
+識別を行う複雑な従来手法に代わる新しい手法として、
 ニューラルネットワークを用いた識別アルゴリズムの開発を行ってきた。
 この結果、実際の測定データを用いて学習を行ったニューラルネットワークは、
 従来手法よりも高速かつ高精度に散乱事象を識別することが分かった。
